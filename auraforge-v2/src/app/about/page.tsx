@@ -1,0 +1,7 @@
+import { Navbar } from '@/components/layout/Navbar'
+import { Footer } from '@/components/layout/Footer'
+import type { Metadata } from 'next'
+export const metadata: Metadata = { title: 'About AuraForge', description: 'Our mission to make AI fun and viral.' }
+export default function Page() {
+  return (<><Navbar /><main className="pt-28 pb-20 px-4 max-w-3xl mx-auto"><div className="text-center mb-12"><div className="text-6xl mb-5">✨</div><h1 className="font-display text-4xl sm:text-5xl font-bold mb-4 gradient-text">About AuraForge</h1><p className="text-lg text-muted-foreground">We build the most fun AI tools on the internet.</p></div><div className="space-y-6">{[{t:'Our Mission',c:'AuraForge makes AI genuinely fun and accessible. We believe everyone deserves to discover themselves through AI — whether that\'s finding their aura color, getting roasted, or building a creator brand. We build tools people actually want to share.'},{t:'Why We Exist',c:'Most AI tools are boring productivity apps or intimidating dev tools. We bridge the gap — bringing frontier AI into everyday life through shareable, viral experiences.'},{t:'Contact',c:'Questions? Ideas? Partnerships? hello@auraforge.app'}].map(s=><div key={s.t} className="p-6 rounded-2xl border border-border bg-card"><h2 className="font-display text-xl font-bold mb-3">{s.t}</h2><p className="text-muted-foreground leading-relaxed text-sm">{s.c}</p></div>)}</div></main><Footer /></>)
+}
