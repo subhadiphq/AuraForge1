@@ -103,9 +103,9 @@ export function DashboardContent({ profile, recentGenerations }: Props) {
                     tab === item.id ? 'bg-primary/10 text-primary' : 'text-muted-foreground hover:bg-card hover:text-foreground')}>
                   <item.icon className="w-4 h-4" />
                   {item.label}
-                  {item.id === 'referrals' && (profile?.referral_count ?? 0) > 0 && (
+                  {item.id === 'referrals' && ((profile as any)?.referral_count ?? 0) > 0 && (
                     <span className="ml-auto text-xs bg-primary text-white px-1.5 py-0.5 rounded-full">
-                      {profile?.referral_count}
+                      {(profile as any)?.referral_count}
                     </span>
                   )}
                 </button>
@@ -139,8 +139,8 @@ export function DashboardContent({ profile, recentGenerations }: Props) {
 
 function OverviewTab({ profile, generations, isPremium }: { profile: User | null; generations: Generation[]; isPremium: boolean }) {
   const stats = [
-    { label: 'Total Generations', value: formatNumber(profile?.total_generations ?? 0), icon: Sparkles, color: 'text-violet-400' },
-    { label: 'Referrals Made',    value: String(profile?.referral_count ?? 0),         icon: Gift,     color: 'text-emerald-400' },
+    { label: 'Total Generations', value: formatNumber((profile as any)?.total_generations ?? 0), icon: Sparkles, color: 'text-violet-400' },
+    { label: 'Referrals Made',    value: String((profile as any)?.referral_count ?? 0),         icon: Gift,     color: 'text-emerald-400' },
     { label: 'Public Shares',     value: String(generations.filter(g => g.is_public).length), icon: TrendingUp, color: 'text-blue-400' },
   ]
   return (
@@ -211,11 +211,11 @@ function ReferralsTab({ profile, referralLink }: { profile: User | null; referra
       {/* Stats */}
       <div className="grid grid-cols-2 gap-4">
         <div className="glass border border-white/5 rounded-2xl p-5">
-          <div className="font-display text-3xl font-bold gradient-text mb-1">{profile?.referral_count ?? 0}</div>
+          <div className="font-display text-3xl font-bold gradient-text mb-1">{(profile as any)?.referral_count ?? 0}</div>
           <div className="text-sm text-muted-foreground">Friends Referred</div>
         </div>
         <div className="glass border border-white/5 rounded-2xl p-5">
-          <div className="font-display text-3xl font-bold gradient-text mb-1">{profile?.credits_earned_from_referrals ?? 0}</div>
+          <div className="font-display text-3xl font-bold gradient-text mb-1">{(profile as any)?.credits_earned_from_referrals ?? 0}</div>
           <div className="text-sm text-muted-foreground">Credits Earned</div>
         </div>
       </div>
